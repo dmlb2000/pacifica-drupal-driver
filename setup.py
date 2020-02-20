@@ -12,18 +12,18 @@ from setuptools import setup, find_packages
 INSTALL_REQS = parse_requirements('requirements.txt', session='hack')
 
 setup(
-    name='pacifica-service',
+    name='pacifica-drupal-driver',
     use_scm_version=True,
     setup_requires=['setuptools_scm'],
-    description='Pacifica Example Library',
-    url='https://github.com/pacifica/template-repository/',
+    description='Pacifica Drupal Driver Library',
+    url='https://github.com/pacifica/pacifica-drupal-driver/',
     long_description=open(path.join(
         path.abspath(path.dirname(__file__)),
         'README.md')).read(),
     long_description_content_type='text/markdown',
     author='David Brown',
     author_email='dmlb2000@gmail.com',
-    packages=find_packages(),
+    packages=find_packages(include='pacifica.*'),
     namespace_packages=['pacifica'],
     install_requires=[str(ir.req) for ir in INSTALL_REQS]
 )
