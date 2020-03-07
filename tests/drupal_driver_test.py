@@ -1,23 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """Test the example module."""
+from os import path
 from unittest import TestCase
-from pacifica.drupal_driver import Example
+from pacifica.drupal_driver.__main__ import main
 
 
-class TestExample(TestCase):
+class TestCommand(TestCase):
     """Test the example class."""
 
-    def test_add(self):
+    def test_main(self):
         """Test the add method in example class."""
-        self.assertEqual(Example().add('123', 'abc'),
-                         '123abc', 'sum of strings should work')
-        self.assertEqual(Example().add(123, 456), 579,
-                         'sum of integers should work')
-
-    def test_mul(self):
-        """Test the mul method in example class."""
-        self.assertEqual(Example().mul('a', 4), 'aaaa',
-                         'multiply of string and number should work')
-        self.assertEqual(Example().mul(2, 3), 6,
-                         'multiply of two integers should work')
+        self.assertEqual(main('--config', path.join(path.dirname(__file__), 'drupal.ini'), 'content_types', '--prefix', 'office', 'chairs', 'tables'), 0, 'main should return 0')
